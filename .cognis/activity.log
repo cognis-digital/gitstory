@@ -36,3 +36,4 @@
 2025-12-07T13:47:37  test: it's not flaky, you're flaky
 2026-01-17T08:04:44  chore: routine maintenance
 2026-05-08T15:21:51  docs: clarify usage notes
+2024-06-02T11:47:37  perf(detect): improve error messages with context
