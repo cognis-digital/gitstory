@@ -37,3 +37,4 @@
 2026-01-17T08:04:44  chore: routine maintenance
 2026-05-08T15:21:51  docs: clarify usage notes
 2024-06-02T11:47:37  perf(detect): improve error messages with context
+2024-06-25T18:04:44  ci(parser): wire the MCP tool schema
