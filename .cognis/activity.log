@@ -38,3 +38,4 @@
 2026-05-08T15:21:51  docs: clarify usage notes
 2024-06-02T11:47:37  perf(detect): improve error messages with context
 2024-06-25T18:04:44  ci(parser): wire the MCP tool schema
+2024-07-19T13:21:51  fix(ci): handle empty and malformed input
