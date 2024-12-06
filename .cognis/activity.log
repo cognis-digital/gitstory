@@ -46,3 +46,4 @@
 2024-10-11T12:46:26  refactor(fixtures): trim whitespace in parsed fields
 2024-11-05T19:03:33  docs: expand examples
 2024-11-29T14:20:40  feat(scan): memoize repeated lookups
+2024-12-06T09:37:47  feat(mcp): add pagination to large reports
