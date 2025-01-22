@@ -48,3 +48,4 @@
 2024-11-29T14:20:40  feat(scan): memoize repeated lookups
 2024-12-06T09:37:47  feat(mcp): add pagination to large reports
 2024-12-29T16:54:54  docs(cli): add a fast path for the common case
+2025-01-22T11:11:01  perf: micro-optimization
