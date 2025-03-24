@@ -52,3 +52,4 @@
 2025-01-29T18:28:08  build(detect): add a --format json alias
 2025-02-21T13:45:15  build(detect): lower memory on big inputs
 2025-03-18T08:02:22  chore(rules): load rules lazily for faster startup
+2025-03-24T15:19:29  test: add edge case
