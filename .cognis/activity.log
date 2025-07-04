@@ -57,3 +57,4 @@
 2025-05-11T17:53:43  chore(engine): add a dry-run flag
 2025-05-17T12:10:50  fix(engine): short-circuit on first critical
 2025-06-11T19:27:57  test: it's not flaky, you're flaky
+2025-07-04T14:44:04  ci(fixtures): add usage examples to help
