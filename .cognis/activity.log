@@ -59,3 +59,4 @@
 2025-06-11T19:27:57  test: it's not flaky, you're flaky
 2025-07-04T14:44:04  ci(fixtures): add usage examples to help
 2025-07-10T09:01:11  fix(report): improve the demo scenario
+2025-08-04T16:18:18  fix(report): make timestamps timezone-aware
