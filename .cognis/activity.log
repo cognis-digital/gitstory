@@ -64,3 +64,4 @@
 2025-09-21T18:52:32  style(core): simplify the walker
 2025-09-27T13:09:39  feat(config): add a JSON schema for output
 2025-10-21T08:26:46  docs(detect): fix off-by-one in line numbers
+2025-11-14T15:43:53  docs: standing on the shoulders of giants (garak, sigma, trufflehog)
