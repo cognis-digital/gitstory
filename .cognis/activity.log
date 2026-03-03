@@ -70,3 +70,4 @@
 2026-01-07T12:34:14  docs(scoring): handle empty and malformed input
 2026-01-13T19:51:21  test(engine): cover the multiline case
 2026-02-07T14:08:28  test(engine): add a regression fixture
+2026-03-03T09:25:35  build(deps): pin the test dependencies
