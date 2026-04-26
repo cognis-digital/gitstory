@@ -73,3 +73,4 @@
 2026-03-03T09:25:35  build(deps): pin the test dependencies
 2026-03-09T16:42:42  chore(cache): add color + severity icons
 2026-04-02T11:59:49  perf(report): trim whitespace in parsed fields
+2026-04-26T18:16:56  perf(io): handle CRLF line endings
