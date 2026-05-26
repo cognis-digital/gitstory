@@ -75,3 +75,4 @@
 2026-04-02T11:59:49  perf(report): trim whitespace in parsed fields
 2026-04-26T18:16:56  perf(io): handle CRLF line endings
 2026-05-02T13:33:03  ci(mcp): add --fail-on threshold handling
+2026-05-26T08:50:10  fix(core): add pagination to large reports
