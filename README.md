@@ -125,7 +125,17 @@ Pipes into your stack: **SARIF** for code-scanning, **JSON** for anything, an **
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="install-anywhere"></a>
-## Install anywhere
+## Install — every way, every platform
+
+```bash
+pip install "git+https://github.com/cognis-digital/gitstory.git"    # pip (works today)
+pipx install "git+https://github.com/cognis-digital/gitstory.git"   # isolated CLI
+uv tool install "git+https://github.com/cognis-digital/gitstory.git" # uv
+pip install cognis-gitstory                                          # PyPI (when published)
+docker run --rm ghcr.io/cognis-digital/gitstory:latest --help        # Docker
+brew install cognis-digital/tap/gitstory                             # Homebrew tap
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/gitstory/main/install.sh | sh
+```
 
 | Linux | macOS | Windows | Docker | Cloud |
 |---|---|---|---|---|
