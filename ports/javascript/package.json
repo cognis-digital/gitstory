@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/gitstory",
+  "version": "0.2.0",
+  "description": "JavaScript port of gitstory (Cognis Neural Suite)",
+  "bin": {
+    "gitstory": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
