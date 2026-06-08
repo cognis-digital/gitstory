@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: gitstory, labels: { app: gitstory } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: gitstory } }
+  template:
+    metadata: { labels: { app: gitstory } }
+    spec:
+      containers:
+        - name: gitstory
+          image: ghcr.io/cognis-digital/gitstory:latest
+          ports: [{ containerPort: 8000 }]
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "500m", memory: "256Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: gitstory }
+spec:
+  selector: { app: gitstory }
+  ports: [{ port: 80, targetPort: 8000 }]
