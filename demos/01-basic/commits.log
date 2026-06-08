@@ -1,0 +1,8 @@
+a1b2c3d4e5f60718293a4b5c6d7e8f900a1b2c3dfeat(auth)!: require OAuth2 for all API tokensBREAKING CHANGE: legacy static API keys are no longer accepted; clients must migrate to OAuth2 device flow.
+b2c3d4e5f60718293a4b5c6d7e8f900a1b2c3d4efeat(api): add cursor-based pagination to /eventsReturns a next_cursor field; offset paging is deprecated.
+c3d4e5f60718293a4b5c6d7e8f900a1b2c3d4e5ffix(scanner): handle empty RVOL windows without crashing
+d4e5f60718293a4b5c6d7e8f900a1b2c3d4e5f60perf(parser): cache compiled regexes across commits
+e5f60718293a4b5c6d7e8f900a1b2c3d4e5f6071docs(readme): document the structured log input format
+f60718293a4b5c6d7e8f900a1b2c3d4e5f607182fix: correct off-by-one in date range filter
+0718293a4b5c6d7e8f900a1b2c3d4e5f60718293chore(deps): bump dev tooling pins
+18293a4b5c6d7e8f900a1b2c3d4e5f6071829304Merge branch 'release/1.5' into main
