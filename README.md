@@ -36,9 +36,12 @@ classic viral DX utility
 <a name="features"></a>
 ## Features
 
-- ✅ Todo
-- ✅ Fixme
-- ✅ Xxx
+- ✅ Parse Commit
+- ✅ Parse Log
+- ✅ Group Commits
+- ✅ Bump Version
+- ✅ Render Markdown
+- ✅ Build Changelog
 - ✅ Runs on Linux/macOS/Windows · Docker · devcontainer
 - ✅ Ports in Python, JavaScript, Go, and Rust (`ports/`)
 
