@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-gitstory
+pip install "git+https://github.com/cognis-digital/gitstory.git"
 gitstory scan .            # → prioritized findings in seconds
 ```
 
@@ -51,7 +51,7 @@ classic viral DX utility
 ## Quick start
 
 ```bash
-pip install cognis-gitstory
+pip install "git+https://github.com/cognis-digital/gitstory.git"
 gitstory --version
 gitstory scan .                       # scan current project
 gitstory scan . --format json         # machine-readable
