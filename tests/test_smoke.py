@@ -136,7 +136,7 @@ class TestBuildAndCli(unittest.TestCase):
         self.assertEqual(rc, 0)
         data = json.loads(buf.getvalue())
         self.assertEqual(data["total_commits"], 2)
-        self.assertEqual(data["recommended_version"], "1.1.0")
+        self.assertEqual(data["recommended_version"], "v1.1.0")
 
     def test_cli_bump_json(self):
         buf = io.StringIO()

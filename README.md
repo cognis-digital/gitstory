@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/gitstory.git"
 gitstory scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+GITSTORY reads your Git commit history and automatically generates a clean, formatted changelog — the "what changed" document you share when releasing new versions. It understands the widely-used "conventional commits" style (like `feat:` or `fix:`) to sort changes into categories and figure out whether a release is a major, minor, or patch update. You pipe in your git log and get back a ready-to-publish release summary in plain text, Markdown, or JSON. It is aimed at developers and DevOps teams who want to automate release notes without manual writing.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why gitstory?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -48,6 +54,42 @@ classic viral DX utility
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`gitstory` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/gitstory/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/gitstory/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/gitstory.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/gitstory.git"  # uv
+pip install "git+https://github.com/cognis-digital/gitstory.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/gitstory.git
+cd gitstory && pip install .
+```
+
+Then run:
+```sh
+gitstory --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
