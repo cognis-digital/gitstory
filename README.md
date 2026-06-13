@@ -20,6 +20,32 @@ pip install cognis-gitstory
 gitstory scan .            # → prioritized findings in seconds
 ```
 
+
+## Usage — step by step
+
+1. Install (Python 3.9+):
+   ```bash
+   pip install gitstory
+   ```
+2. Build a changelog from a git log. Feed it the structured log (or plain
+   subjects) on stdin:
+   ```bash
+   git log --format='%H%x1f%s%x1f%b%x1e' v1.2.0..HEAD | gitstory changelog -t v1.3.0
+   ```
+3. Recommend the next semantic version from the same commits:
+   ```bash
+   git log --format='%H%x1f%s%x1f%b%x1e' v1.2.0..HEAD | gitstory bump v1.2.0
+   ```
+4. Read the output: the table view prints the markdown changelog plus a summary
+   line (commit counts, breaking changes, recommended version). Use
+   `--format json` to consume `markdown`, `recommended_version` and
+   `bump_level` programmatically.
+5. Automate a release step (write notes + capture the next tag):
+   ```bash
+   git log --format='%H%x1f%s%x1f%b%x1e' $(git describe --tags --abbrev=0)..HEAD \
+       | gitstory changelog --format json -c $(git describe --tags --abbrev=0) > release.json
+   ```
+
 ## Contents
 
 - [Why gitstory?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
