@@ -16,9 +16,15 @@
 </div>
 
 ```bash
-pip install cognis-gitstory
+pip install "git+https://github.com/cognis-digital/gitstory.git"
 gitstory scan .            # → prioritized findings in seconds
 ```
+
+<!-- cognis:layman:start -->
+## What is this?
+
+GITSTORY reads your Git commit history and automatically generates a clean, formatted changelog — the "what changed" document you share when releasing new versions. It understands the widely-used "conventional commits" style (like `feat:` or `fix:`) to sort changes into categories and figure out whether a release is a major, minor, or patch update. You pipe in your git log and get back a ready-to-publish release summary in plain text, Markdown, or JSON. It is aimed at developers and DevOps teams who want to automate release notes without manual writing.
+<!-- cognis:layman:end -->
 
 ## Contents
 
@@ -48,10 +54,56 @@ classic viral DX utility
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:domains:start -->
+## Domains
+
+**Primary domain:** Cloud & DevTools  ·  **JTF MERIDIAN division:** ATHENA-PRIME · COGNI-2
+
+**Topics:** `cognis` `devtools` `cloud` `developer-tools`
+
+Part of the **Cognis Neural Suite** — 300+ source-available tools organized across 12 domains under the JTF MERIDIAN command structure. See the [suite on GitHub](https://github.com/cognis-digital) and [jtf-meridian](https://github.com/cognis-digital/jtf-meridian) for how the pieces fit together.
+<!-- cognis:domains:end -->
+
+<!-- cognis:install:start -->
+## Install
+
+`gitstory` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/gitstory/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/gitstory/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/gitstory.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/gitstory.git"  # uv
+pip install "git+https://github.com/cognis-digital/gitstory.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/gitstory.git
+cd gitstory && pip install .
+```
+
+Then run:
+```sh
+gitstory --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
-pip install cognis-gitstory
+pip install "git+https://github.com/cognis-digital/gitstory.git"
 gitstory --version
 gitstory scan .                       # scan current project
 gitstory scan . --format json         # machine-readable
