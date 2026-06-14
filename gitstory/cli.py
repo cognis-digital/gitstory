@@ -23,8 +23,11 @@ from .core import build_changelog, parse_log, bump_version
 
 def _read_input(path: Optional[str]) -> str:
     if path and path != "-":
-        with open(path, "r", encoding="utf-8") as fh:
-            return fh.read()
+        try:
+            with open(path, "r", encoding="utf-8") as fh:
+                return fh.read()
+        except OSError as exc:
+            raise OSError(f"cannot read input file {path!r}: {exc.strerror}") from exc
     data = sys.stdin.read()
     return data
 
@@ -103,7 +106,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_cl = sub.add_parser("changelog", help="build a changelog from a git log")
     p_cl.add_argument("-i", "--input", help="log file (default: stdin)")
-    p_cl.add_argument("-t", "--tag", default="Unreleased", help="release tag/version header")
+    p_cl.add_argument(
+        "-t", "--tag", default="Unreleased", help="release tag/version header"
+    )
     p_cl.add_argument("-d", "--date", default=None, help="release date string")
     p_cl.add_argument(
         "-c", "--current", default=None, help="current version, to recommend a bump"

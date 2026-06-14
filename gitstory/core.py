@@ -17,9 +17,13 @@ that multi-line bodies survive intact. We use the ASCII Record Separator
 """
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
+
+TOOL_NAME = "gitstory"
+TOOL_VERSION = "0.1.0"
 
 RECORD_SEP = "\x1e"
 FIELD_SEP = "\x1f"
@@ -134,9 +138,8 @@ def parse_log(text: str) -> List[Commit]:
 
     Supports two formats:
       1. Structured: records separated by \\x1e, fields (sha, subject, body)
-         separated by \\x1f -- i.e. `git log --format='%H%x1f%s%x1f%b%x1e'`.
-      2. Plain: one commit subject per line (sha omitted). Useful for piping
-         `git log --format='%s'` or hand-written changelog input.
+         separated by \\x1f.
+      2. Plain: one commit subject per line (sha omitted).
     """
     text = text or ""
     commits: List[Commit] = []
@@ -171,6 +174,7 @@ def group_commits(
     Returns (sections, breaking_commits). Breaking changes are surfaced both
     in their type section and in a dedicated breaking list.
     """
+    commits = list(commits) if commits is not None else []
     buckets: Dict[str, List[Commit]] = {}
     other: List[Commit] = []
     breaking: List[Commit] = []
@@ -189,21 +193,29 @@ def group_commits(
     sections: List[ReleaseSection] = []
     for key, heading in TYPE_HEADINGS.items():
         if buckets.get(key):
-            sections.append(ReleaseSection(key=key, heading=heading, commits=buckets[key]))
+            sections.append(
+                ReleaseSection(key=key, heading=heading, commits=buckets[key])
+            )
     if other:
-        sections.append(ReleaseSection(key="other", heading="Other Changes", commits=other))
+        sections.append(
+            ReleaseSection(key="other", heading="Other Changes", commits=other)
+        )
     return sections, breaking
 
 
 def _parse_semver(version: str) -> Tuple[int, int, int, str]:
     """Parse a (possibly v-prefixed) semver into (major, minor, patch, prefix)."""
+    if not version or not isinstance(version, str):
+        raise ValueError(f"invalid semantic version: {version!r}")
     prefix = ""
     v = version.strip()
+    if not v:
+        raise ValueError(f"invalid semantic version: {version!r}")
     if v[:1].lower() == "v":
         prefix = v[0]
         v = v[1:]
     # Drop any pre-release / build metadata for bumping math.
-    core = re.split(r"[-+]", v, 1)[0]
+    core = re.split(r"[-+]", v, maxsplit=1)[0]
     nums = core.split(".")
     while len(nums) < 3:
         nums.append("0")
@@ -222,6 +234,7 @@ def bump_version(current: str, commits: List[Commit]) -> Tuple[str, str]:
     Returns (new_version, bump_level).
     """
     major, minor, patch, prefix = _parse_semver(current)
+    commits = list(commits) if commits is not None else []
 
     has_breaking = any(c.breaking for c in commits)
     has_feat = any(c.type == "feat" for c in commits)
@@ -260,13 +273,16 @@ def render_markdown(
     date: Optional[str] = None,
 ) -> str:
     """Render a markdown changelog block for a single release."""
+    version = version if version is not None else "Unreleased"
+    sections = list(sections) if sections is not None else []
+    breaking = list(breaking) if breaking is not None else []
     header = f"## {version}"
     if date:
         header += f" - {date}"
     lines: List[str] = [header, ""]
 
     if breaking:
-        lines.append("### ⚠ BREAKING CHANGES")
+        lines.append("### \u26a0 BREAKING CHANGES")
         lines.append("")
         for c in breaking:
             text = c.breaking_desc or c.description
@@ -326,3 +342,17 @@ def build_changelog(
         "breaking": [c.to_dict() for c in breaking],
         "markdown": markdown,
     }
+
+
+def scan(target: str) -> dict:
+    """Alias for build_changelog; accepts a raw git log string.
+
+    Provided so external integrations (e.g. mcp_server) have a stable
+    single-call entry point without needing to know the internal name.
+    """
+    return build_changelog(target or "")
+
+
+def to_json(data: dict) -> str:
+    """Serialise a result dict (as returned by scan/build_changelog) to JSON."""
+    return json.dumps(data, indent=2)
