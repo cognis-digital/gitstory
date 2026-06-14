@@ -34,3 +34,6 @@ gitstory = "gitstory.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["gitstory"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
