@@ -54,6 +54,9 @@ def _cmd_changelog(args: argparse.Namespace) -> int:
         include_unconventional=args.include_all,
         current_version=args.current,
     )
+    rec = result.get("recommended_version")        # changelog reports bare semver
+    if rec and rec[0] in "vV":
+        result["recommended_version"] = rec[1:]
     if args.format == "json":
         json.dump(result, sys.stdout, indent=2)
         sys.stdout.write("\n")
