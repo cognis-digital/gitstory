@@ -304,6 +304,8 @@ def build_changelog(
     bump_level = None
     if current_version:
         recommended, bump_level = bump_version(current_version, commits)
+        if recommended and recommended[0] in "vV":   # changelog reports bare semver
+            recommended = recommended[1:]
 
     markdown = render_markdown(version, sections, breaking, date)
 
