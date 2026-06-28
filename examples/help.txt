@@ -1,0 +1,16 @@
+$ gitstory-emit --help
+
+usage: gitstory [-h] [--version] [--format {table,json}] {changelog,bump} ...
+
+Changelog and release notes from conventional commits.
+
+positional arguments:
+  {changelog,bump}
+    changelog           build a changelog from a git log
+    bump                recommend the next semantic version
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+                        output format (default: table)

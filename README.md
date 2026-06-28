@@ -21,6 +21,65 @@ gitstory scan .            # → prioritized findings in seconds
 ```
 
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ gitstory-emit --version
+gitstory 0.1.0
+```
+
+```console
+$ gitstory-emit --help
+usage: gitstory [-h] [--version] [--format {table,json}] {changelog,bump} ...
+
+Changelog and release notes from conventional commits.
+
+positional arguments:
+  {changelog,bump}
+    changelog           build a changelog from a git log
+    bump                recommend the next semantic version
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+                        output format (default: table)
+```
+
+> Blocks above are real `gitstory` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"timestamp": "2023-02-15T14:30:00Z",
+"findings": [
+    {
+        "id": "1234567890abcdef",
+        "title": "Suspicious Network Traffic",
+        "description": "Potential malicious activity detected on port 443.",
+        "severity": "medium",
+        "labels": ["network", "traffic"],
+        "created_at": "2023-02-15T14:30:00Z"
+    },
+    {
+        "id": "2345678901cdefghij",
+        "title": "Unusual File Access",
+        "description": "Access to a sensitive file detected from an unknown location.",
+        "severity": "high",
+        "labels": ["file", "access"],
+        "created_at": "2023-02-15T14:35:00Z"
+    }
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. Install (Python 3.9+):
